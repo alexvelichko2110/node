@@ -264,7 +264,7 @@ int main ()
         render->set_viewport(0, 0, WIDTH, HEIGHT);
         render->clear();
 
-        Texture* tex = rm()->textures("default").get();
+        Texture* tex = rm()->textures("tex1").get();
         render->set_texture(0, tex);
 
         // draw rect field
