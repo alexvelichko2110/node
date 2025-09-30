@@ -1,15 +1,12 @@
 #version 330 core
-
-in vec2 TexCoord;
-
+in vec2 TexCoords;
 out vec4 color;
 
-
-uniform sampler2D ourTexture;
-uniform vec4 ourColor;
-
+uniform sampler2D text;
+uniform vec4 textColor;
 
 void main()
-{
-    color = vec4(1, 1, 1, texture(ourTexture, TexCoord).a) * ourColor;
+{    
+    vec4 sampled = vec4(1.0, 1.0, 1.0, texture(text, TexCoords).r);
+    color = textColor * sampled;
 }

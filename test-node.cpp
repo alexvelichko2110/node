@@ -102,13 +102,13 @@ void mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
 
 
 
-void load_resources_all()
-{
-    rm()->load_shader("poly", "./resources/simple_one_mat.vs", "./resources/poly.fs");
-    rm()->load_shader("line1", "./resources/simple_one_mat.vs", "./resources/lines.fs");
+// void load_resources_all()
+// {
+//     rm()->load_shader("poly", "./resources/simple_one_mat.vs", "./resources/poly.fs");
+//     rm()->load_shader("line1", "./resources/simple_one_mat.vs", "./resources/lines.fs");
     
-    rm()->load_texture("tex1", "./resources/tex1.jpeg");
-}
+//     rm()->load_texture("tex1", "./resources/tex1.jpeg");
+// }
 
 
 int main ()
@@ -177,14 +177,15 @@ int main ()
 
 
     Render* render = new Render();
-    //render->allocate_all();
+    render->load_resources_all();
 
     render->set_framebuffer_size(WIDTH, HEIGHT);
     render->init();
 
 
-    load_resources_all();
+   //load_resources_all();
 
+    rm()->load_texture("tex1", "./resources/tex1.jpeg");
 
 
 
@@ -269,34 +270,34 @@ int main ()
 
         // draw rect field
         {
-            Shader* shader = rm()->shaders("poly").get();
+            // Shader* shader = rm()->shaders("poly").get();
 
 
-            render->draw_buffer_u(buffer_rects, &node, &camera, shader, true);
+            render->draw_buffer_u(buffer_rects, &node, &camera, true);
         }
 
         // draw line
         {
 
-            Shader* shader = rm()->shaders("line1").get();
+            // Shader* shader = rm()->shaders("line1").get();
 
-            render->draw_buffer_u(buffer_lines, &node, &camera, shader, false);
+            render->draw_buffer_u(buffer_lines, &node, &camera, false);
         }
 
 
 
         {
-            Shader* shader = rm()->shaders("poly").get();
+            // Shader* shader = rm()->shaders("poly").get();
 
-            render->draw_buffer_u(buffer_rects, &node1, &camera, shader, true);
+            render->draw_buffer_u(buffer_rects, &node1, &camera, true);
         }
 
         // draw line
         {
 
-            Shader* shader = rm()->shaders("line1").get();
+            // Shader* shader = rm()->shaders("line1").get();
 
-            render->draw_buffer_u(buffer_lines, &node1, &camera, shader, false);
+            render->draw_buffer_u(buffer_lines, &node1, &camera, false);
         }
 
         // Swap the screen buffers
